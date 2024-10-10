@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restratrazione{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1>Registrazione</h1>
+    
+    {{ form(registerform) }}
+
+    <p>Hai un account? <a href="{{ path('app_login') }}">
+        <strong>Accedi ora</strong>
+    </a>
+
+</div>
+{% endblock %}

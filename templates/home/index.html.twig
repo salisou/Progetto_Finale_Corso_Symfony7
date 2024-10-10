@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    {# <div class="articles">
+        {% for article in articoli %}    
+            <div class="aticle-item">
+                <div class="article-image">
+                    <img src="{{ article.imageUrl }}" width="300" height="300" alt="immagine dell\'articolo: {{ article.title}}">
+                </div>
+                <div class="atricle-details">
+                    <div class="article-author-detials">
+                        <div class="article-author-picture">
+                            <img src="{{ article.author.profile.picture }}" width="50" height="50" alt="immagine del profilo di {{ article.author.lastname }}">
+                        </div>
+                    </div>
+                    <div class="article-content-detials">
+                        <h2 class="article-title">{{ article.title}}</h2>
+                        <div class="article-createdat">{{ article.createdAt | date("${m/d/Y}")}}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div> #}
+
+   
+
+{% endblock %}

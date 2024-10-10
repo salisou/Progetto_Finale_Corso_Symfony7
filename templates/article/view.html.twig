@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Colonna Immagine -->
+        <div class="col-md-4">
+            <!-- Immagine dell'articolo -->
+            <img src="{{ article.imageUrl }}" alt="Image for {{ article.title }}" class="img-fluid rounded shadow-sm mb-3">
+
+            <!-- Autore e Data sotto l'immagine -->
+            <div class="article-meta">
+                <p><strong>Autore:</strong> {{ article.author.lastname }}</p>
+                <p><strong>Creato il:</strong> {{ article.createdAt|date('d-m-Y H:i') }}</p>
+            </div>
+        </div>
+
+        <!-- Colonna Contenuto -->
+        <div class="col-md-8">
+            <!-- Titolo -->
+            <h1 class="mb-4">{{ article.title }}</h1>
+
+            <!-- Contenuto dell'articolo -->
+            <p>{{ article.content }}</p>
+
+            <!-- Pulsanti Azione -->
+            <div class="d-flex">
+                <a href="{{ path('article_edit', {id: article.id}) }}" class="btn btn-primary me-2">Modifica</a>
+                <form method="post" action="{{ path('article_delete', {id: article.id}) }}" onsubmit="return confirm('Sei sicuro di voler eliminare questo articolo?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                    <button class="btn btn-danger">Elimina</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

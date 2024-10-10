@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -39,7 +38,7 @@ class Article
     /**
      * @var Collection<int, Category>
      */
-    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'article')]
+    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'articles')]
     private Collection $categories;
 
     public function __construct()
@@ -136,7 +135,9 @@ class Article
     {
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
-            $category->addArticle($this);
+            if (!$category->getArticles()->contains($this)) {
+                $category->addArticle($this);
+            }
         }
 
         return $this;
@@ -145,7 +146,9 @@ class Article
     public function removeCategory(Category $category): static
     {
         if ($this->categories->removeElement($category)) {
-            $category->removeArticle($this);
+            if ($category->getArticles()->contains($this)) {
+                $category->removeArticle($this);
+            }
         }
 
         return $this;

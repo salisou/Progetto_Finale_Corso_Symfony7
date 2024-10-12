@@ -1,0 +1,12 @@
+# config/packages/knp_paginator.yaml
+knp_paginator:
+  page_range: 5 # Numero di pagine mostrate nella navigazione
+  default_options:
+    page_name: page # Nome del parametro per la pagina
+    sort_field_name: sort # Parametro per il campo di ordinamento
+    sort_direction_name: direction # Parametro per la direzione dell'ordinamento
+    filter_field_name: filterField # Parametro per il campo del filtro
+    filter_value_name: filterValue # Parametro per il valore del filtro
+  template:
+    pagination: "@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig" # Usa il template di Bootstrap 5
+    sortable: "@KnpPaginator/Pagination/sortable_link.html.twig"

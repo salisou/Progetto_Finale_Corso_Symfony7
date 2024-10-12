@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+        <h1 class="text-center">Spazio membro privato</h1>
+
+        <div class="row">
+            <div class="col-md-3">   
+                {% include "account/menu.html.twig" %}
+            </div>
+            
+            {# <div class="col-md-9">
+    
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h2>Cerca gli articoli</h2>
+                  </div>
+                  <div class="col-md-6">
+                    <!-- Barra di ricerca -->
+                     <form method="GET" action="{{ path('search_post') }}" class="mb-3">
+                       <input type="text" name="q" placeholder="Cerca il titolo" class="form-control" value="{{ query|default('') }}" />
+                         {# <button type="submit" class="btn btn-primary mt-2">Cerca</button> #}
+                     </form>
+                     <!-- Fine barra di ricerca -->
+                  </div>
+                </div>
+              </div>
+    
+              {# <table class="table table-success table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titolo</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col">Contenuti</th>
+                    <th scope="col">Id dell'utente</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if posts is not empty %}
+                    {% for post in posts %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.slug }}</td>
+                        <td>{{ post.content }}</td>
+                        <td>{{ post.user.id }}</td>
+                        <td>
+                          <a href="#" type="button" class="btn btn-success">Modifica</a>
+                          <a href="#" type="button" class="btn btn-danger"
+                             onclick="return confirm('Sei sicuro di voler cancellare questo post?');">Elimina</a> 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                  {% else %}
+                    <tr>
+                        <td colspan="6">Nessun post con il nome "{{ query }}"</td>
+                    </tr>
+                  {% endif %}
+                </tbody>
+              </table> #}
+            </div> #}
+        </div>
+    </div>
+{% endblock %}

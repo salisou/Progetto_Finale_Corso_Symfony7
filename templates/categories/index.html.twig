@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Lista delle categorie disponibili</h1>
+    
+    <!-- Tabella stilizzata -->
+    <table class="table table-bordered table-hover table-striped text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Immagine</th>
+                <th>Data di Creazione</th>
+                <th>Data di Aggiornamento</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+            <tr>
+                <!-- Nome categoria -->
+                <td>{{ category.name }}</td>
+                
+                <!-- Descrizione categoria -->
+                <td>{{ category.description }}</td>
+                
+                <!-- Visualizzazione immagine -->
+                <td>
+                    <img src="{{ category.imageurl }}" alt="{{ category.name }}" class="img-thumbnail" style="max-width: 150px; max-height: 100px;">
+                </td>
+                
+                <!-- Data di creazione e aggiornamento -->
+                <td>{{ category.createdAt|date("d/m/Y") }}</td>
+                <td>{{ category.updatedAt|date("d/m/Y") }}</td>
+                
+                <!-- Azioni (puoi aggiungere link qui in seguito) -->
+                <td>
+                    <a href="{{ path('categories.show', {'id': category.id}) }}" class="btn btn-info btn-sm">Visualizza</a>
+                    <a href="{{ path('categories.edit', {'id': category.id}) }}" class="btn btn-warning btn-sm">Modifica</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

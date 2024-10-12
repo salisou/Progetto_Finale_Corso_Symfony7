@@ -30,7 +30,6 @@ class RegisterType extends AbstractType
                     'placeholder' => 'Inserisci il tuo indirizzo e-mail'
                 ]
             ])
-            // ])->add('roles')
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options'  => [
@@ -119,6 +118,12 @@ class RegisterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
+            'constraints' => [
+                new UniqueEntity([
+                    'entityClass' => User::class,
+                    'fields' => 'email'
+                ]),
+            ],
             'data_class' => User::class,
         ]);
     }

@@ -21,6 +21,7 @@ class RestraterController extends AbstractController
         // Genera la createdAt  e updatedAt
         $user->setCreatedAt(new \DateTimeImmutable());
         $user->setUpdatedAt(new \DateTimeImmutable());
+
         // Crea il form di registrazione e associa l'oggetto User al form
         $form = $this->createForm(RegisterType::class, $user);
 
@@ -34,14 +35,10 @@ class RestraterController extends AbstractController
             $em->flush();
 
             // Mostra un messaggio di conferma
-            $this->addFlash('success', 'Registrazione completata con successo!');
+            $this->addFlash('message', 'Registrazione completata con successo!');
 
             return $this->redirectToRoute('app_login');
         }
-
-        // Gestisce la richiesta del form
-        $form->handleRequest($request);
-
 
         return $this->render('register/index.html.twig', [
             'registerform' => $form->createView(),

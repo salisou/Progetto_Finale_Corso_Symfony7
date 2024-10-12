@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Dettagli della Categoria {% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1>{{ category.name }}</h1>
+    <p>{{ category.description }}</p>
+
+    <!-- Visualizza l'immagine della categoria -->
+    <img src="{{ category.imageurl }}" alt="{{ category.name }}" class="img-fluid">
+
+    <p>Creato il: {{ category.createdAt|date('d/m/Y') }}</p>
+    <p>Aggiornato il: {{ category.updatedAt|date('d/m/Y') }}</p>
+    
+    <!-- Pulsante per tornare indietro -->
+    <a href="{{ path('app_categories') }}" class="btn btn-primary">Torna alla lista</a>
+</div>
+{% endblock %}

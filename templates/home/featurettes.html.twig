@@ -1,0 +1,57 @@
+{# 
+  Template per visualizzare le prime due categorie in un layout a featurette.
+  Se non ci sono categorie disponibili, viene mostrato un messaggio di avviso.
+#}
+
+{# Imposta una variabile 'categories' che di default è un array vuoto se 'cat' non è definita #}
+{% set categories = cat|default([]) %} 
+
+{# Controlla se ci sono categorie disponibili #}
+{% if categories is not empty %}
+    {# Se ci sono categorie, inizia a mostrarle #}
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            {# Mostra il nome e la descrizione della prima categoria #}
+            <h2 class="featurette-heading fw-normal lh-1">{{ categories[0].name }} 
+                <span class="text-body-secondary">{{ categories[0].description }}</span>
+            </h2>
+            <p class="lead">Una descrizione della prima categoria: {{ categories[0].description }}</p>
+        </div>
+        <div class="col-md-5">
+            {# Mostra l'immagine della prima categoria #}
+            <img src="{{ categories[0].imageurl }}" 
+                 class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+                 alt="{{ categories[0].name }}" 
+                 width="500" 
+                 height="500" />
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    {# Controlla se ci sono più di una categoria per mostrare la seconda #}
+    {% if categories|length > 1 %}
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                {# Mostra il nome e la descrizione della seconda categoria #}
+                <h2 class="featurette-heading fw-normal lh-1">{{ categories[1].name }} 
+                    <span class="text-body-secondary">{{ categories[1].description }}</span>
+                </h2>
+                <p class="lead">Un'altra descrizione della seconda categoria: {{ categories[1].description }}</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                {# Mostra l'immagine della seconda categoria #}
+                <img src="{{ categories[1].imageurl }}" 
+                     class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+                     alt="{{ categories[1].name }}" 
+                     width="500" 
+                     height="500" />
+            </div>
+        </div>
+    {% endif %}
+    
+{% else %}
+    {# Se non ci sono categorie disponibili, mostra un messaggio di avviso #}
+    <p>Nessuna categoria disponibile al momento.</p>
+{% endif %}

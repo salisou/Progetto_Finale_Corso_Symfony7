@@ -44,40 +44,5 @@
 </div>
 
 <!-- Pagination links -->
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        {% if hasPreviousPage %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ currentPage - 1 }}" aria-label="Previous">
-                    <i class="fas fa-chevron-left"></i> <!-- Icona per la pagina precedente -->
-                </a>
-            </li>
-        {% else %}
-            <li class="page-item disabled">
-                <span class="page-link" aria-hidden="true">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
-            </li>
-        {% endif %}
-
-        <!-- Mostra numero pagina attuale -->
-        <li class="page-item active">
-            <span class="page-link">Pagina {{ currentPage }} di {{ totalPages }}</span>
-        </li>
-
-        {% if hasNextPage %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ currentPage + 1 }}" aria-label="Next">
-                    <i class="fas fa-chevron-right"></i> <!-- Icona per la pagina successiva -->
-                </a>
-            </li>
-        {% else %}
-            <li class="page-item disabled">
-                <span class="page-link" aria-hidden="true">
-                    <i class="fas fa-chevron-right"></i>
-                </span>
-            </li>
-        {% endif %}
-    </ul>
-</nav>
+{{ include('_partials/_paginator.html.twig') }}
 {% endblock %}

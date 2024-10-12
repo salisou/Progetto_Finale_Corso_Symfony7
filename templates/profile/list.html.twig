@@ -1,0 +1,29 @@
+{# templates/profile/list.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista Profili{% endblock %}
+
+{% block body %}
+<div class="container my-6">
+    <h1>Lista Profili</h1>
+
+    <div class="row">
+        {% for profile in profiles %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ profile.picture }}" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Immagine profilo">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ profile.user.firstname }} {{ profile.user.lastname }}</h5>
+                        <p class="card-text">{{ profile.description|length > 100 ? profile.description|slice(0, 100) ~ '...' : profile.description }}</p>
+                        <a href="#" class="btn btn-primary">Vedi profilo</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# Paginazione #}
+    {{ include('_partials/_paginator.html.twig') }}
+</div>
+{% endblock %}

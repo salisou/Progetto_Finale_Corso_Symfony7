@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class RestraterController extends AbstractController
 {
-    #[Route('/resgister', name: 'app_register')]
+    #[Route('/register', name: 'app_register')]
     public function index(Request  $request, EntityManagerInterface $em): Response
     {
         // Crea l'oggetto User

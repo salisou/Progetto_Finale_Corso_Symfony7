@@ -4,6 +4,13 @@
 
 {% block body %}
 <div class="container my-5">
+    <!--Message flash-->
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <h1>Registrazione</h1>
     
     {{ form(registerform) }}

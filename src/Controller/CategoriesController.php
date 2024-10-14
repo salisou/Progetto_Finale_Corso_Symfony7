@@ -13,6 +13,41 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CategoriesController extends AbstractController
 {
+
+    #[Route('/categories/create', name: 'categories.create')]
+    public function create(Request $request, EntityManagerInterface $em): Response
+    {
+        // Crea una nuova istanza dell'entità Category
+        $category = new Category();
+
+        // Crea il form utilizzando CategoryType
+        $form = $this->createForm(CategoryType::class, $category);
+
+        // Gestisce i dati del form e li assegna all'entità
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Imposta la data di creazione e aggiornamento
+            $category->setCreatedAt(new \DateTimeImmutable());
+            $category->setUpdatedAt(new \DateTimeImmutable());
+
+            // Salva la nuova categoria nel database
+            $em->persist($category);
+            $em->flush();
+
+            // Messaggio di conferma e redirect alla lista delle categorie
+            $this->addFlash('success', 'Categoria creata con successo!');
+
+            return $this->redirectToRoute('categories.list');
+        }
+
+        // Renderizza il form nel template se non è stato inviato o è incompleto
+        return $this->render('categories/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    //-----------------------------------------------------------------------------------------
     #[Route('/categories', name: 'app_categories')]
     public function index(CategoryRepository  $category): Response
     {
@@ -24,6 +59,7 @@ class CategoriesController extends AbstractController
         ]);
     }
 
+    //-----------------------------------------------------------------------------------------
     #[Route('/categories/show/{id}', name: 'categories.show')]
     public function show(int $id, EntityManagerInterface $em): Response
     {
@@ -41,6 +77,7 @@ class CategoriesController extends AbstractController
         ]);
     }
 
+    //-----------------------------------------------------------------------------------------
     #[Route('/categories/edit/{id}', name: 'categories.edit')]
     public function edit(int $id, Request $request, EntityManagerInterface $em): Response
     {
@@ -72,4 +109,7 @@ class CategoriesController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    //-----------------------------------------------------------------------------------------
+
 }

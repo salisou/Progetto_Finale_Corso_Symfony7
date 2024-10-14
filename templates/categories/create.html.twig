@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crea una nuova Categoria{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Crea una nuova Categoria</h1>
+
+    {# Mostra il form #}
+    {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.imageUrl) }}
+            {{ form_widget(form.imageUrl) }}
+        </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}

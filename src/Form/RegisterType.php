@@ -121,7 +121,7 @@ class RegisterType extends AbstractType
             'constraints' => [
                 new UniqueEntity([
                     'entityClass' => User::class,
-                    'fields' => 'email'
+                    'fields' => 'email',
                 ]),
             ],
             'data_class' => User::class,

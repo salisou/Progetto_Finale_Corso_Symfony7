@@ -62,8 +62,9 @@ class ArticleRepository extends ServiceEntityRepository
      *
      * @return \Doctrine\ORM\Tools\Pagination\Paginator Restituisce un oggetto Paginator per gestire la paginazione
      */
-    public function findArticolPaginated(int $limit = 3, int $currentPage = 1)
+    public function findArticolPaginated(int $limit = 6, int $currentPage = 1)
     {
+
         // Crea una query utilizzando il QueryBuilder per selezionare gli articoli
         $query = $this->createQueryBuilder('a')
             // Ordina gli articoli in ordine decrescente in base al campo "id"

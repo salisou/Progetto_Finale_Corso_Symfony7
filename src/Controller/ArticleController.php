@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ArticleController extends AbstractController
 {
-    #[Route('/create', name: 'article_create', methods: ['GET', 'POST'])]
+    #[Route('/create_Article', name: 'article_create', methods: ['GET', 'POST'])]
     public function createArticle(Request $request, EntityManagerInterface $em): Response
     {
         $article = new Article();
@@ -23,7 +23,7 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $article->setCreatedAt(new \DateTimeImmutable()); // Imposta la data di creazione
+            $article->setCreatedAt(createdAt: new \DateTimeImmutable()); // Imposta la data di creazione
 
             $em->persist($article);
             $em->flush();

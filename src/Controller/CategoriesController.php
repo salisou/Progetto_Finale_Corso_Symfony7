@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class CategoriesController extends AbstractController
 {
 
-    #[Route('/categories/create', name: 'categories.create')]
+    #[Route('/categories_create', name: 'categories.create')]
     public function create(Request $request, EntityManagerInterface $em): Response
     {
         // Crea una nuova istanza dell'entità Category

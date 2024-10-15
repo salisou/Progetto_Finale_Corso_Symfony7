@@ -23,12 +23,12 @@ class AuthTest extends WebTestCase
 
         // Invia il form di registrazione con i dati necessari
         $client->submitForm('register[Salva]', [
-            'register[email]' => 'test1@gmail.com',
+            'register[email]' => 'prova@gmail.com',
             'register[plainPassword][first]' => 'Test@1234',
             'register[plainPassword][second]' => 'Test@1234',
             'register[firstname]' => 'test1',
             'register[lastname]' => 'prova1',
-            'register[profile]' => 302
+            'register[profile]' => 101
         ]);
 
         // Verifica del redirect alla pagina di login dopo la registrazione
@@ -58,7 +58,7 @@ class AuthTest extends WebTestCase
 
         // Invia il form di login con le credenziali
         $client->submitForm('Accedi', [ // Cambia 'Accedi' con il nome o valore corretto del pulsante
-            '_username' => 'test1@gmail.com',
+            '_username' => 'prova@gmail.com',
             '_password' => 'Test@1234'
         ]);
 

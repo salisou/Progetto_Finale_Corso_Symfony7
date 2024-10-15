@@ -13,20 +13,20 @@ use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController
 {
 
-    #[Route('/main', name: 'app_main')]
+    #[Route('/', name: 'app_main')]
     public function index(): Response
     {
         // Verifica se l'utente è autenticato
-        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
-            // L'utente è autenticato, reindirizzalo alla homepage o un'altra pagina
-            return $this->redirectToRoute('app_home');
-        }
+        // if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+        //     // L'utente è autenticato, reindirizzalo alla homepage o un'altra pagina
+        //     return $this->redirectToRoute('app_home');
+        // }
 
         // Se l'utente non è autenticato, reindirizzalo alla pagina di login
         return $this->redirectToRoute('app_login');
     }
 
-    #[Route('/', name: 'app_home')]
+    #[Route('/home', name: 'app_home')]
     public function article(ArticleRepository $articleRepository, Request $request): Response
     {
         // Limita il numero di articoli per pagina

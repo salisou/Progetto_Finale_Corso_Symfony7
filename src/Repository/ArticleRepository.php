@@ -57,7 +57,7 @@ class ArticleRepository extends ServiceEntityRepository
      * Questo metodo esegue una query utilizzando il QueryBuilder per recuperare una lista di articoli
      * ordinati in ordine decrescente per ID e restituisce un oggetto Paginator per gestire la paginazione.
      *
-     * @param int $limit Il numero massimo di articoli da visualizzare per pagina (default: 12)
+     * @param int $limit Il numero massimo di articoli da visualizzare per pagina (default: 3)
      * @param int $currentPage La pagina corrente che si desidera visualizzare (default: 1)
      *
      * @return \Doctrine\ORM\Tools\Pagination\Paginator Restituisce un oggetto Paginator per gestire la paginazione

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container my-5">
+    <h1>Spazio membro</h1>
+    
+    
+    
+    <div class="row">
+        <div class="col-md-3">   
+            {% include "account/menu.html.twig" %}
+        </div>
+        <div class="col-md-9">
+            <h5>Modifica la tua Password</h5>
+            {{ form(formModificaPassword) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -30,7 +30,7 @@ class HomeController extends AbstractController
     public function article(ArticleRepository $articleRepository, Request $request): Response
     {
         // Limita il numero di articoli per pagina
-        $limit = 3;
+        $limit = 6;
 
         // Recupera la pagina corrente dalla richiesta (default: 1)
         $currentPage = $request->query->getInt('page', 1);
